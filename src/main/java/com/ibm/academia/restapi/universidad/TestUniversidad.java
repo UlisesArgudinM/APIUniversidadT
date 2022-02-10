@@ -35,9 +35,9 @@ public class TestUniversidad implements CommandLineRunner
 		System.out.println(personaAlumno.toString());
 		 */
 		
-		List<Persona> alumnos = (List<Persona>)alumnoDao.buscarTodos();
+		/*List<Persona> alumnos = (List<Persona>)alumnoDao.buscarTodos();
 		alumnos.forEach(System.out::println);
-		
+		*/
 		/*Carrera carrera = null;
 		
 		Optional<Carrera> oCarrera = carreraDao.buscarPorTd(1L);
