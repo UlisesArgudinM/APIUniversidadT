@@ -2,6 +2,7 @@ package com.ibm.academia.restapi.universidad.servicios;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +13,10 @@ import com.ibm.academia.restapi.universidad.repositorios.AulaRepository;
 @Service
 public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implements AulaDAO
 {
-
-	public AulaDAOImpl(AulaRepository aulaRepository) {
-		super(aulaRepository);
+	
+	@Autowired
+	public AulaDAOImpl(AulaRepository repository) {
+		super(repository);
 		
 	}
 
