@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name="aulas" ,schema="universidad")
+@Table(name="alumnos",schema = "universidad")
 public class Aula implements Serializable
 {
 	@Id
@@ -59,11 +59,11 @@ public class Aula implements Serializable
 	private Date fechaModificacion;
 	
 	@ManyToOne(optional = true, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID"))
+	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_1_PABELLON_ID"))
 	private Pabellon pabellon;
 	
 	public Aula(Long id, String numeroAula, String medidas, Integer cantidadPupitres, TipoPizarron tipoPizarron,
-			String usuariosCracion) 
+			String usuariosCreacion) 
 	{
 		
 		this.id = id;
@@ -71,7 +71,7 @@ public class Aula implements Serializable
 		this.medidas = medidas;
 		this.cantidadPupitres = cantidadPupitres;
 		this.tipoPizarron = tipoPizarron;
-		this.usuarioCreacion = usuariosCracion;
+		this.usuarioCreacion = usuariosCreacion;
 	}
 	
 

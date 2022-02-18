@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Persona;
 import com.ibm.academia.restapi.universidad.repositorios.PersonaRepository;
 
@@ -41,5 +42,23 @@ public class PersonaDAOImpl extends GenericoDAOImpl<Persona,PersonaRepository> i
 		return repository.buscarPersonaPorApellido(apellido);
 	}
 
+	@Override
+	@Transactional
+	public Persona actualizar(Long personaId, Persona persona) 
+	{
+		Optional<Persona> oPersona = repository.findById(personaId);
+		
+		if(!oPersona.isPresent())
+			throw new NotFoundException(String.format("La persona con ID %d no existe", personaId)); 
+		
+		Persona personaActualizada = null;
+		oPersona.get().setNombre(persona.getNombre());
+		oPersona.get().setApellido(persona.getApellido());
+		oPersona.get().setDireccion(persona.getDireccion());
+		oPersona.get().setDni(persona.getDni());
+		oPersona.get().setFechaCreacion(persona.getFechaCreacion());
+		personaActualizada = repository.save(oPersona.get());
+		return personaActualizada;
+	}
 	
 }

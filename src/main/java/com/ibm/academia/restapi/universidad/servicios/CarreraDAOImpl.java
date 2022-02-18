@@ -1,10 +1,13 @@
 package com.ibm.academia.restapi.universidad.servicios;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Carrera;
 import com.ibm.academia.restapi.universidad.repositorios.CarreraRepository;
 
@@ -33,9 +36,9 @@ public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> 
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Carrera> findCarreraByCantidadAniosAfter(Integer cantidadAnios) {
+	public Iterable<Carrera> findCarrerasByCantidadAniosAfter(Integer cantidadAnios) {
 		
-		return repository.findCarreraByCantidadAniosAfter(cantidadAnios);
+		return repository.findCarrerasByCantidadAniosAfter(cantidadAnios);
 	}
 
 	@Override
@@ -43,5 +46,21 @@ public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> 
 	public Iterable<Carrera> buscarCarrerasPorProfesorNombreYApellido(String nombre, String apellido) {
 		
 		return repository.buscarCarrerasPorProfesorNombreYApellido(nombre, apellido);
+	}
+
+	@Override
+	@Transactional
+	public Carrera actualizar(Long carreraId, Carrera carrera) 
+	{
+		Optional<Carrera> oCarrera = repository.findById(carreraId);
+		
+		if(!oCarrera.isPresent())
+			throw new NotFoundException(String.format("La carrera con ID %d no existe", carreraId)); 
+		
+		Carrera carreraActualizada = null;
+		oCarrera.get().setCantidadAnios(carrera.getCantidadAnios());
+		oCarrera.get().setCantidadMaterias(carrera.getCantidadMaterias());
+		carreraActualizada = repository.save(oCarrera.get());
+		return carreraActualizada;
 	}
 }

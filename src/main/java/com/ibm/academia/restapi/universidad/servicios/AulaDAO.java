@@ -1,8 +1,5 @@
 package com.ibm.academia.restapi.universidad.servicios;
 
-import java.util.Optional;
-
-
 import com.ibm.academia.restapi.universidad.enumeradores.TipoPizarron;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Aula;
 
@@ -10,7 +7,8 @@ public interface AulaDAO extends GenericoDAO<Aula>
 {
 	public Iterable<Aula>findAulasByTipo_Pizarron(TipoPizarron tipoPizarron);
 	
-	public Optional<Aula>findAulasByPabellon_Id(String pabellon);
+	public Iterable<Aula>findAulasByPabellon_Id(Integer pabellonId);
 	
-	public Optional<Aula>findAulaByNumero_Aula(String numeroAula);
+	public Iterable<Aula>findAulaByNumero_Aula(String numeroAula);
+	public Aula actualizar(Long aulaId, Aula aula);
 }

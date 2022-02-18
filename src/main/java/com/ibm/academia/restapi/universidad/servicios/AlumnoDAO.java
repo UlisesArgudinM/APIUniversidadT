@@ -4,5 +4,7 @@ import com.ibm.academia.restapi.universidad.modelo.entidades.Persona;
 
 public interface AlumnoDAO extends PersonaDAO
 {
-	public Iterable<Persona>buscarAlumnosPorNombre(String nombre);
+	public Iterable<Persona>buscarAlumnosPorNombreCarrera(String nombre);
+	public Persona actualizar(Long alumnoId, Persona alumno);
+	public Persona asociarCarreraAlumno(Long carreraId, Long alumnoId);
 }

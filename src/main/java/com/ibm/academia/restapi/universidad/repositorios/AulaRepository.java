@@ -1,7 +1,5 @@
 package com.ibm.academia.restapi.universidad.repositorios;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +13,9 @@ public interface AulaRepository extends CrudRepository<Aula, Long>
 	public Iterable<Aula>findAulasByTipo_Pizarron(TipoPizarron tipoPizarron);
 	
 	
-	public Optional<Aula>findAulasByPabellon_Id(String pabellon);
+	public Iterable<Aula>findAulasByPabellon_Id(Integer pabellon_id);
 	
 	
-	public Optional<Aula>findAulaByNumero_Aula(String numeroAula);
+	public Iterable<Aula>findAulaByNumero_Aula(String numeroAula);
 
 }
