@@ -45,6 +45,14 @@ public class DatosDummy
 	{
 		return new Profesor(null, "Martin", "Axacar", "4477899", "nsegura", new Direccion(), new BigDecimal("600000"));
 	}
+	public static Persona profesor02()
+	{
+		return new Profesor(null, "Mercedesz", "Lopez", "4477899", "nsegura", new Direccion(), new BigDecimal("600000"));
+	}
+	public static Persona profesor03()
+	{
+		return new Profesor(null, "Luz", "Montano", "4477899", "nsegura", new Direccion(), new BigDecimal("600000"));
+	}
 	public static Optional<Persona> persona01()
 	{
 		return Optional.of(new Alumno(null, "Ulises", "Argudin", "2016178", "nsegura", new Direccion()));
