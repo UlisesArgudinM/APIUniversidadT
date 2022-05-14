@@ -82,6 +82,7 @@ public class ProfesorController
 		return new ResponseEntity<Persona>(oProfesor.get(), HttpStatus.OK);	
 	}
 	
+	
 	@PostMapping("/profesor")
 	public ResponseEntity<?> guardar(@Valid @RequestBody Profesor profesor, BindingResult result)
 	{

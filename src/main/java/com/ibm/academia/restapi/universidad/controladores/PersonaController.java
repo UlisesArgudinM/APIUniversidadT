@@ -81,6 +81,7 @@ public class PersonaController
 		
 		return new ResponseEntity<Persona>(oPersona.get(), HttpStatus.OK);	
 	}
+
 	
 	@PostMapping("/carrera")
 	public ResponseEntity<?> guardar(@Valid @RequestBody Persona persona, BindingResult result)
